@@ -1,8 +1,12 @@
+import { useWeb3 } from '@3rdweb/hooks'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 
 const Home: NextPage = () => {
+
+  const { address, connectWallet } = useWeb3()
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
@@ -24,6 +28,7 @@ const Home: NextPage = () => {
             pages/index.tsx
           </code>
         </p>
+        <button className="border border-indigo-500 text-xl" onClick={() => connectWallet('injected')}>Connect wallet</button>
 
         <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
           <a
