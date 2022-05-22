@@ -1,20 +1,20 @@
 import { useWeb3 } from '@3rdweb/hooks'
 import type { NextPage } from 'next'
 import { useEffect } from 'react'
-import toast, { Toaster } from "react-hot-toast"
+import toast from "react-hot-toast"
+import Navbar from '../components/Navbar'
 
 const Home: NextPage = () => {
   const { address, connectWallet } = useWeb3()
-  toast.success(`Your address: ${address} was connected successfully`)
 
   useEffect(() => {
     if (!address) return
-    console.log(`${address} checked for history`)
+  toast.success(`Address connected successfully`, {position: 'bottom-center'})
   }, [address])
 
   return (
     <>
-    <Toaster/>
+    <Navbar/>
       {address ? (
         <div>{address}</div>
       ) : (
